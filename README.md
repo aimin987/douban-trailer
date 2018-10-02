@@ -1,2 +1,2 @@
-# douban-trailen
+# douban-trailer
 koa2学习
