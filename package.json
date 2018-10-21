@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aimin987/douban-trailer/issues"
   },
-  "homepage": "https://github.com/aimin987/douban-trailer#readme"
+  "homepage": "https://github.com/aimin987/douban-trailer#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  }
 }
