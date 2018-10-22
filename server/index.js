@@ -1,17 +1,20 @@
 const Koa = require('koa');
-//const ejs = require('ejs');
-const pug = require('pug');
+const views = require('koa-views');
+const { resolve } = require('path');
 
-const { htmlTpl, ejsTpl, pugTpl } = require('./tpl')
+const app = new Koa();
 
-const app = new Koa()
+/**配置界面路径 */
+app.use(views(resolve(__dirname, './views'), {
+    extension: 'pug'
+}));
 
+/**路由 */
 app.use(async (ctx, next) => {
-    ctx.type = 'text/html; charset=utf-8';
-    ctx.body = pug.render(pugTpl, {
+    await ctx.render('index', {
         you: 'Luke',
-        me: 'Aimin'
-    })
-})
+        me: 'Aimin987'
+    });
+});
 
 app.listen(4455)
