@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const doubanId = '26425063'
+const doubanId = '5300054'
 const url = `https://movie.douban.com/subject/${doubanId}`
 
 const videoBase = `https://movie.douban.com/trailer/219491`
