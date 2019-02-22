@@ -10,9 +10,21 @@ async function fetchMovie(item) {
     return res;
 }
 
-(async () => {
 
-    let movies = [];
+; (async () => {
+    console.log('开始');
+    let movies = [{
+        doubanId: 30181133,
+        title: '逆流而上的你',
+        rate: 6,
+        poster: 'https://img1.doubanio.com/view/photo/l_ratio_poster/public/p2547257418.jpg'
+    },
+    {
+        doubanId: 30327898,
+        title: '耀眼',
+        rate: 8.5,
+        poster: 'https://img3.doubanio.com/view/photo/l_ratio_poster/public/p2546066840.jpg'
+    }];
 
     movies.map(async movie => {
         let movieData = await fetchMovie(movie);
@@ -25,4 +37,4 @@ async function fetchMovie(item) {
         }
 
     });
-});
+})();

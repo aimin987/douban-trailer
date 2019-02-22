@@ -2,7 +2,7 @@ const cp = require('child_process');
 const { resolve } = require('path');
 
 (async () => {
-    const script = resolve(__dirname, '../crawler/trailer-list');
+    const script = resolve(__dirname, '../crawler/video');
     const child = cp.fork(script, []);
     let invoked = false;
 
@@ -18,7 +18,7 @@ const { resolve } = require('path');
         if (invoked) {
             return;
         }
-        invoked = true;
+        invoked = false;
         let err = code === 0 ? null : new Error('exit code ' + code);
         if (err) {
             console.log(err);
