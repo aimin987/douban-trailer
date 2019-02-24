@@ -26,7 +26,6 @@ const { resolve } = require('path');
     });
 
     child.on('message', data => {
-        let result = data.result;
-        console.log(result);
+        console.log(data);
     });
 })();
