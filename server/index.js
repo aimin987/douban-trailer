@@ -1,13 +1,21 @@
 const Koa = require('koa');
-const app = new Koa();
-
 const views = require('koa-views');
 const { resolve } = require('path');
+const { connect, initSchemas } = require('./database/init');
+const router = require('./routes/movie');
 
-const { connect } = require('./database/init');
+const app = new Koa();
+
+/** 设置路由 */
+app.use(router.routes()).use(router.allowedMethods());
 
 (async () => {
-    connect();
+    await connect();
+
+    initSchemas();
+
+    //require('./tasks/movies');
+    // require('./tasks/api');
 })();
 
 /**配置界面路径 */

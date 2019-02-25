@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const glob = require('glob');
+const { resolve } = require('path');
+
 const db = 'mongodb://localhost/douban-trailer';
 
 mongoose.Promise = global.Promise;
@@ -52,14 +55,12 @@ exports.connect = () => {
          * 数据库打开成功
          */
         mongoose.connection.once('open', () => {
-            const Dog = mongoose.model('Dog', {name: String});
-            const doga = new Dog({name: '阿尔法'});
-            doga.save().then(()=>{
-                console.log('Wang');
-            });
-
             resolve();
             console.log('MongoDB Connected successfully');
         });
     });
+}
+
+exports.initSchemas = () => {
+    glob.sync(resolve(__dirname, './schema/', '**/*.js')).forEach(require);
 }
