@@ -1,34 +1,43 @@
 const Koa = require('koa');
 const views = require('koa-views');
 const { resolve } = require('path');
+const R = require('ramda');
+
 const { connect, initSchemas } = require('./database/init');
-const router = require('./routes/movie');
 
-const app = new Koa();
+/** 
+ * 设置路由
+ */
+const MIDDLEWARES = ['router'];
+const useMiddlewares = (app) => {
+    R.map(
+        R.compose(
+            R.forEachObjIndexed(
+                initWith => initWith(app)
+            ),
+            require,
+            name => resolve(__dirname, `./middlewares/${name}`)
+        )
+    )(MIDDLEWARES)
+}
 
-/** 设置路由 */
-app.use(router.routes()).use(router.allowedMethods());
-
-(async () => {
+/**
+ * 开启服务器
+ */
+async function start() {
+    // 数据库连接
     await connect();
-
     initSchemas();
 
-    //require('./tasks/movies');
-    // require('./tasks/api');
-})();
+    const app = new Koa();
+    await useMiddlewares(app);
+    app.listen(4455)
+}
 
-/**配置界面路径 */
-app.use(views(resolve(__dirname, './views'), {
-    extension: 'pug'
-}));
+start();
 
-/**路由 */
-app.use(async (ctx, next) => {
-    await ctx.render('index', {
-        you: 'Luke',
-        me: 'Aimin987'
-    });
-});
 
-app.listen(4455)
+// /**配置界面路径 */
+// app.use(views(resolve(__dirname, './views'), {
+//     extension: 'pug'
+// }));
