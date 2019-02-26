@@ -5,7 +5,8 @@
   "main": "start.js",
   "scripts": {
     "start": "node start.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html --no-cache -d dist --public-url /"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,10 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "autoprefixer": "^7.1.6",
+    "cssnext": "^1.8.4",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "1.2.1"
   }
 }
