@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./assets/common.sass"}],"generated":{"js":"\"use strict\";\n\nrequire(\"./assets/common.sass\");\n\nfunction changeTitle() {\n  window.$('#app').html('Parcel 打包包');\n}\n\nsetTimeout(function () {\n  changeTitle();\n}, 2000);"},"hash":"caa8432206030fd5892f1e7cb57b3f8f"}

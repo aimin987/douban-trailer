@@ -8,7 +8,7 @@ const { connect, initSchemas } = require('./database/init');
 /** 
  * 设置路由
  */
-const MIDDLEWARES = ['router'];
+const MIDDLEWARES = ['router', 'parcel'];
 const useMiddlewares = (app) => {
     R.map(
         R.compose(
