@@ -1,9 +1,9 @@
 import { getAllMovies, getMovie } from '../service/movie';
 const { controller, get, post, put } = require('../lib/decorator');
 
-@controller('/api/v0/movies')
+@controller('/api/v0')
 export class MovieController {
-    @get('/')
+    @get('/all')
     async getMovies(ctx, next) {
         const { type, year } = ctx.query;
         const movies = await getAllMovies(type, year);
@@ -12,7 +12,7 @@ export class MovieController {
         }
     }
 
-    @get('/:id')
+    @get('/detail/:id')
     async getMovie(ctx, next) {
         const id = ctx.params.id;
         const movie = await getMovie(id);
