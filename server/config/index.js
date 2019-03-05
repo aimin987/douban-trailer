@@ -1,8 +1,14 @@
-module.exports = {
-    'qiniu': {
-        'bucket': 'yugao',
-        'video': 'pnbs5bifg.bkt.clouddn.com',
-        'AK': 'XuYecUOgPzAJE2mT04x-56sN1txHKraX73LH3hr0',
-        'SK': 'nO28V5E-BnQWt2dpOB_baSdcOhsFU0ME00L0lxYa'
-    }
-};
+const host = process.env.HOST || 'localhost';
+const env = process.env.NODE_ENV || 'development';
+
+const config = require(`./env/${env}`).default;
+
+// export default Object.assign(
+//     {
+//         env,
+//         host
+//     },
+//     config
+// );
+
+export default config;
