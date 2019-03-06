@@ -37,7 +37,9 @@ async function start() {
                 : `App listening on port ${port}`
         )
 
-        //require('./tasks/qiniu');
+        //require('./tasks/movies');
+        // require('./tasks/trailer');
+        //require('./tasks/api')
     })
 }
 

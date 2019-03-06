@@ -11,18 +11,19 @@ const movieSchema = new Schema({
         type: ObjectId,
         ref: 'Category'
     }],
-
-    rate: Number,
     title: String,
+    directors:[String],
+    writers:[String],
+    casts:[String],
+    duration:String,
+    rate: Number,
     summary: String,
     video: String,
     poster: String,
     cover: String,
-
     videoKey: String,
     posterKey: String,
     coverKey: String,
-
     rawTitle: String,
     movieTypes: [String],
     pubdate: Mixed,

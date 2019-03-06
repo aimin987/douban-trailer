@@ -26,7 +26,9 @@ async function fetchMovie(item) {
             { summary: null },
             { year: { $exists: false } },
             { title: '' },
-            { summary: '' }
+            { summary: '' },
+            { writers: null},
+            { writers: { $exists: false } },
         ]
     }).exec();
 
@@ -41,9 +43,15 @@ async function fetchMovie(item) {
             movie.title = movieData.alt_title || movieData.title;
             movie.rawTitle = movieData.title || '';
 
+            console.log(movieData.attrs);
+
             if (movieData.attrs) {
                 movie.movieTypes = movieData.attrs.movie_type || [];
-                movie.year = movieData.attrs.year[0] || 2500
+                movie.year = movieData.attrs.year[0] || 2500;
+                movie.directors = movieData.attrs.director || [];
+                movie.writers = movieData.attrs.writer || [];
+                movie.casts = movieData.attrs.cast || [];
+                movie.duration = movieData.attrs.movie_duration ? movieData.attrs.movie_duration[0] : '';
 
                 for (let i = 0; i < movie.movieTypes.length; i++) {
                     const item = movie.movieTypes[i];

@@ -9,8 +9,8 @@ const sleep = (time) => new Promise((resolve) => {
 (async () => {
     console.log('Start visit the target page');
     const browser = await puppeteer.launch({
-        //executablePath: '/Applications/Chromium.app/Contents/MacOS/Chromium',
-        executablePath: 'D:/Program Files (x86)/chrome-win/chrome.exe',
+        executablePath: '/Applications/Chromium.app/Contents/MacOS/Chromium',
+        //executablePath: 'D:/Program Files (x86)/chrome-win/chrome.exe',
         args: ['--no-sandbox'],
         dumpio: false
     })
@@ -24,7 +24,7 @@ const sleep = (time) => new Promise((resolve) => {
 
     await page.waitForSelector('.more')
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 2; i++) {
         await sleep(3000)
         await page.click('.more')
     }
