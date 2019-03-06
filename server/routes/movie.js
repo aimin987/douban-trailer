@@ -18,7 +18,10 @@ export class MovieController {
         const movie = await getMovie(id);
 
         ctx.body = {
-            movie
+            data: {
+                movie
+            },
+            success: true
         }
     }
 }
